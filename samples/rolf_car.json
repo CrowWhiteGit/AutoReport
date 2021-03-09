@@ -1,0 +1,71 @@
+{
+    "model": "Car2",
+    "customQuery": {
+        "$or": [
+            {
+                "archived": false
+            },
+            {
+                "systemInfo.mark": {
+                    "$ne": null
+                }
+            }
+        ]
+    },
+    "limit": 10,
+    "format": "xlsx",
+    "fields": [
+        {
+            "name": "VIN",
+            "value": "vin"
+        },
+        {
+            "name": "Пробег",
+            "value": "run"
+        },
+        {
+            "name": "№ метки",
+            "value": "systemInfo.mark"
+        },
+        {
+            "name": "Марка",
+            "value": "mark"
+        },
+        {
+            "name": "Модель",
+            "value": "model"
+        },
+        {
+            "name": "Кузов",
+            "value": "body-type"
+        },
+        {
+            "name": "КПП",
+            "value": "transmission"
+        },
+        {
+            "name": "Двигатель",
+            "value": "engine-type"
+        },
+        {
+            "name": "Привод",
+            "value": "gear-type"
+        },
+        {
+            "name": "Год",
+            "value": "year"
+        },
+        {
+            "name": "Цвет",
+            "value": "color"
+        },
+        {
+            "name": "Цена",
+            "value": "price"
+        },
+        {
+            "name": "№ ключа",
+            "value": "keyNumber"
+        }
+    ]
+}

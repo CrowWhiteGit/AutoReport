@@ -1,0 +1,105 @@
+{
+    "model": "Action2",
+    "customQuery": {
+
+    },
+    "joins": [
+        {
+            "model": "User2",
+            "innerKey": "user",
+            "outerKey": "cloud_id",
+            "name": "$user"
+        },
+        {
+            "model": "Car2",
+            "innerKey": "subject",
+            "outerKey": "cloud_id",
+            "name": "$car"
+        }
+    ],
+    "format": "xlsx",
+    "fields": [
+        {
+            "name": "ID",
+            "value": "cloud_id"
+        },
+        {
+            "name": "Дата/время",
+            "value": "time",
+            "type": "datetime"
+        },
+        {
+            "name": "Тип события",
+            "value": "action",
+            "map": {
+                "takeKey": "Ключ взят",
+                "returnKey": "Ключ возвращён",
+                "bindKey": "Ключ привязан",
+                "unbindKey": "Ключ отвязан",
+                "createCar": "Машина добавлена вручную",
+                "updateCar": "Машина изменена",
+                "achiveCar": "Машина архивирована",
+                "unachiveCar": "Машина разархивирована",
+                "insertMark": "Вставлена метка",
+                "takeMark": "Взята метка без ключа"
+            }
+        },
+        {
+            "name": "МС",
+            "value": "system",
+            "map": {
+                "1": "TOYOTA",
+                "2": "LEXUS",
+                "3": "PREMIUM",
+                "4": "DEV"
+            }
+        },
+        {
+            "name": "Сотрудник",
+            "type": "builder",
+            "transform": "capitalize",
+            "value": "{$user.surname} {(0,1)$user.name} {(0,1)$user.middle_name}"
+        },
+        {
+            "name": "Должность",
+            "value": "$user.position"
+        },
+        {
+            "name": "VIN",
+            "value": "$car.vin"
+        },
+        {
+            "name": "УНА / № ключа",
+            "type": "builder",
+            "value": "{$car.carun} / {$car.keyNumber}"
+        },
+        {
+            "name": "Код ключа",
+            "value": "$car.systemInfo.mark"
+        },
+        {
+            "name": "Марка",
+            "value": "$car.mark"
+        },
+        {
+            "name": "Модель",
+            "value": "$car.model"
+        },
+        {
+            "name": "Кузов",
+            "value": "$car.body-type"
+        },
+        {
+            "name": "Год",
+            "value": "$car.year"
+        },
+        {
+            "name": "Цвет",
+            "value": "$car.color"
+        },
+        {
+            "name": "Цена",
+            "value": "$car.price"
+        }
+    ]
+}

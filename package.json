@@ -1,0 +1,23 @@
+{
+  "name": "autoreport",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrowWhiteGit/AutoReport.git"
+  },
+  "author": "CrowWhite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CrowWhiteGit/AutoReport/issues"
+  },
+  "homepage": "https://github.com/CrowWhiteGit/AutoReport#readme",
+  "dependencies": {
+    "mongoose": "^5.11.19",
+    "node-xlsx": "^0.16.1"
+  }
+}
