@@ -1,0 +1,8 @@
+
+.ReportEdit {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    color: #efeff5;
+    padding: 20px;
+}

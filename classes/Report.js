@@ -2,17 +2,21 @@
 const xlsx = require('node-xlsx');
 const utils = require('../lib/utils');
 const steps = require('../steps');
-const db = require('../models');
+
 
 class Report {
 
-    constructor(template = {}, requestQuery = {}) {
+    constructor(db, template = {}, requestQuery = {}) {
+        this.db = db;
+
         this.template = template;
         this.requestQuery = requestQuery;
 
         this.query = { ...template.customQuery, ...requestQuery };
         this.header = null;
         this.rows = null;
+
+        this.getHeader = this.getHeader.bind(this);
     }
 
     async handle() {
@@ -41,7 +45,10 @@ class Report {
 
 async function getDocs() {
     let { model, query, joins = [] } = this.template;
-    let rawDocs = await db[model].find(query).limit(5).lean();
+    console.log(Object.keys(this.template))
+    console.log(Object.keys(this.db), "|",  model, "|", this.db);
+    console.log(this.db[model])
+    let rawDocs = await this.db[model].find(query).limit(5).lean();
     let docs = await applyJoin(rawDocs, joins);
     return docs;
 }
@@ -56,7 +63,7 @@ async function applyJoin(rawDocs, joins) {
             if (innerValue) {
                 let query = {};
                 query[join.outerKey] = innerValue;
-                let joinDoc = await db[join.model].findOne(query).lean();
+                let joinDoc = await this.db[join.model].findOne(query).lean();
                 doc[join.name] = joinDoc || {};
             }
         }

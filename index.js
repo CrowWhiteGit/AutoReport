@@ -1,7 +1,4 @@
-require('./connect/mongo');
 
-async function main() {
-    require('./test')
-}
+const Reporter = require('./classes/Reporter');
 
-main()
+module.exports = Reporter;

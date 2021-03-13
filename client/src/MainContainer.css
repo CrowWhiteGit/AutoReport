@@ -1,0 +1,7 @@
+.MainContainer {
+    background-color: #222d39;
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}

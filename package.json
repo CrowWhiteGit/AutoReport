@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/CrowWhiteGit/AutoReport#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "mongoose": "^5.11.19",
     "node-xlsx": "^0.16.1"
   }
